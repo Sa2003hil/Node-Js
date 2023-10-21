@@ -193,6 +193,37 @@ _The basic functionality of the server is to accept the req and then parse the u
 ![Alt text](/Server/Assets/image8.png)
 
 
+
+## Day 3 : HTTP Methods in NodeJS
+
+**Point 1:**
+
+HTTP defines a set of request methods to indicate the desired action to be performed for a given resource.
+
+- **GET :** _[Default method]_
+![Alt text](/Server/Assets/image10.png)
+
+- **POST :**
+
+  _Like Login Pages or Forms uses Post method to send data to the server_
+![Alt text](/Server/Assets/image11.png)
+
+- **PUT :**
+
+  If we want to upload any file on the server like if i want to upload a image on the server then we use PUT method
+
+- **PATCH :**
+
+    If we want to updata any existing data on the server then we use PATCH method like if we want to update any user data then we use PATCH method like name of the existing user
+
+- **DELETE :**
+
+    If we want to delete any data from the server then we use DELETE method like if we want to delete any user from the database then we use DELETE method
+
+
+  
+
+
 ### Prerequisites
 
 List the software, libraries, and tools that users need to have installed before using your project.
