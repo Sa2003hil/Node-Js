@@ -264,7 +264,7 @@ and also we don't need url module here so we can remove it
 npm uninstall url
 ```
 
-# Day 5 : How Versioning Works in NodeJS?
+## Day 5 : How Versioning Works in NodeJS?
 - Here '**^**' means **install all Recommended and minnor Fixes Automatically**
 
 ![Alt text](/Server/Assets/image13.png)
@@ -274,6 +274,16 @@ npm uninstall url
 
 
 ![Alt text](/Server/Assets/image14.png)
+
+## Day 6 : What is REST API?
+
+If you are an **Backend Developer** then this particular topic is very important for you to understand because in today's world every application is using REST API to communicate with the server and to get the data from the server
+
+
+**1. What is RESTFULL API ?**
+
+---
+
 
 ### Prerequisites
 

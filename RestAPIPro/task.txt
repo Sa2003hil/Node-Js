@@ -1,0 +1,28 @@
+Here We are going to make an REST API - (Basically JSON based API)
+
+Important NOTE:
+Server is basically a hybrid server , means humara server aisa hona chahiye ki vo
+browser ko bhi support kare and another mobile apps ko bhi support kare.
+
+'/users' --> returning JSON
+
+means any user do GET req on 
+
+'/users' ---> render HTML document
+'/api/users' ---> return JSON (mobile apps)
+
+Basically we are making an Hybrid server which can support both browser and mobile apps.This is a good practice to do.
+
+GET /users - List all users ✅
+GET /api/users - List all users ✅
+GET /api/user/1 - GET the user with id 1
+GET /api/user/2 - GET the user with id 2
+
+
+POST /api/users - Create new users
+
+PATCH /api/user/id - Edit the user with id 1..n
+
+DELETE /api/users/id - Delete the user with id 1..n
+
+to do all these things firstly we want a data here we don't have any data   
