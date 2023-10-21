@@ -258,6 +258,22 @@ app.listen(8000, () => {
 ## Conclusion
 _from this we can conclude that by using express we can reduce the code and it is easy to use and understand it have many inbuilt functions which we can use to make our code more efficient_
 
+and also we don't need url module here so we can remove it
+```bash
+# uninstall url module
+npm uninstall url
+```
+
+# Day 5 : How Versioning Works in NodeJS?
+- Here '**^**' means **install all Recommended and minnor Fixes Automatically**
+
+![Alt text](/Server/Assets/image13.png)
+
+
+- Here '**~**' means **install all minnor Fixes only automatically**
+
+
+![Alt text](/Server/Assets/image14.png)
 
 ### Prerequisites
 
