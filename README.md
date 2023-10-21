@@ -219,9 +219,44 @@ HTTP defines a set of request methods to indicate the desired action to be perfo
 - **DELETE :**
 
     If we want to delete any data from the server then we use DELETE method like if we want to delete any user from the database then we use DELETE method
+---
+
+# Getting With Express Js
+
+### Day 4 : Introduction to Express JS
+
+- Express.js is a popular framework for Node.js because it simplifies web development, provides a robust set of features, and has a strong community and ecosystem. It's well-suited for building web applications, RESTful APIs, and microservices in a scalable and efficient manner. 
+
+-  Node.js is a powerful runtime for building server-side applications, but it's relatively low-level. Express.js simplifies the process of building web applications on top of Node.js, providing a higher-level API for common web development tasks.
+
+```bash
+# install express js
+npm i express
+```
+
+**CODE :**
+
+```js
+import express from 'express'
+const app = express()
+
+app.get('/', (req, res) => {
+  res.send('Hello from Home')
+})
+
+app.get('/about', (req, res) => {
+  res.send(`Hello from ${req.query.name} your age is ${req.query.age} `)
+})
 
 
-  
+// so we dont need http module here it is already included in express internally
+app.listen(8000, () => {
+  console.log('server started')
+})
+
+```
+## Conclusion
+_from this we can conclude that by using express we can reduce the code and it is easy to use and understand it have many inbuilt functions which we can use to make our code more efficient_
 
 
 ### Prerequisites
