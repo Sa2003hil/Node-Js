@@ -32,7 +32,7 @@ app.get('/api/users', (req, res) => {
 
 app.get('/users', (req, res) => {
   const html = `
-  <ul>${users.map(user => `<li>${user.first_name}</li>`).join('')}</ul>
+  <ul>${users.map(user => `<li>${user.last_name}</li>`).join('')}</ul>
   `
   res.send(html)
 })
@@ -40,12 +40,9 @@ app.get('/users', (req, res) => {
 // Dynamic Path Routing ✅
 
 app.get('/api/users/:id', (req, res) => {
-  const { id } = req.params
-  const user = users.find(user => user.id === Number(id))
-  if (!user) {
-    return res.status(404).json({ success: false, message: 'No user found' })
-  }
-  return res.json(user)
+  const id = req.params.id
+  const user = users.find(user => user.id == id)
+  res.json(user)
 })
 
 // listening to the server
