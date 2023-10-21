@@ -23,6 +23,9 @@ const myServer = http.createServer((req, res) => {
       case '/contact':
         res.end('Contact Page')
         break
+      case '/search':
+        const search = myUrl.query.search_query
+        res.end('You are searching for ' + search)
       default:
         res.writeHead(404, {
           'Content-type': 'text/html'

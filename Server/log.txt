@@ -40,3 +40,8 @@
 1697893275608 : /about?myname=sahil&userid=2 New Request Received
 1697893335718 : /about?myname=sahil&userid=2 New Request Received
 1697893399210 : /about?myname=sahil&userid=2 New Request Received
+1697894830964 : /about?myname=sahil&search=python+gaming New Request Received
+1697894909962 : /searchQuery=Java+tutorials New Request Received
+1697894938401 : /search?searchQuery=Java+tutorials New Request Received
+1697894986219 : /search?search_query=javascript New Request Received
+1697894995277 : /search?search_query=javascript New Request Received
