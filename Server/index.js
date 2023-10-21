@@ -1,27 +1,24 @@
-// imporing http module
+// importing http module
 import http from 'http'
 import fs from 'fs'
+import url from 'url'
 
-/*
--> creating server
-
+// creating server and create a log file when the server is started
 const myServer = http.createServer((req, res) => {
-  console.log('server started')
-  console.log(req.headers) // to get headers
-  res.end('Hello from the server')
-})
-*/
-
-// creating server and create log file when server started
-const myServer = http.createServer((req, res) => {
+  if (req.url == '/favicon.ico') {
+    return res.end()
+  }
   const log = `${Date.now()} : ${req.url} New Request Received\n`
+  const myUrl = url.parse(req.url, true)
+  console.log(myUrl)
   fs.appendFile('log.txt', log, (err, data) => {
-    switch (req.url) {
+    switch (myUrl.pathname) {
       case '/':
         res.end('Home Page')
         break
       case '/about':
-        res.end('About Page')
+        const username = myUrl.query.myname
+        res.end(`HI , ${username}`)
         break
       case '/contact':
         res.end('Contact Page')
@@ -30,12 +27,12 @@ const myServer = http.createServer((req, res) => {
         res.writeHead(404, {
           'Content-type': 'text/html'
         })
+        res.end('404 Not Found')
     }
-    res.end('Hello from the server')
   })
 })
 
-// listening to server
+// listening to the server
 myServer.listen(8000, () => {
   console.log('server started')
 })
