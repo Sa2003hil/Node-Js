@@ -24,42 +24,62 @@ means any user do GET req on
 Basically we are making an Hybrid server which can support both browser and mobile apps.this is a good practice to do.
 
 */
+
 app.get('/api/users', (req, res) => {
   return res.json(users)
 })
 
 // if a user do GET req on '/users' then we will render HTML document✅
 
-app.get('/users', (req, res) => {
-  const html = `
-  <ul>${users.map(user => `<li>${user.last_name}</li>`).join('')}</ul>
-  `
-  res.send(html)
-})
+/*
 
-// Dynamic Path Routing ✅
+Old way of doing this
 
+// GET req ✅
 app.get('/api/users/:id', (req, res) => {
   const id = Number(req.params.id)
   const user = users.find(user => user.id == id)
   res.json(user)
 })
 
-// POST req ✅
-app.post('/api/users', (req, res) => {
-  // TODO : create a new user
-  return res.json({ message: 'User created' })
-})
+// Here we can see that there is a repetition of code in '/api/users/:id' format so we can use app.route() method to remove this repetition of code
 
-// PUT req ✅
+// PATCH req ✅
 app.patch('/api/users/:id', (req, res) => {
   // TODO : Edit the user
   return res.json({ message: 'User created' })
 })
 
 // DELETE req ✅
-app.post('/api/users/:id', (req, res) => {
+app.delete('/api/users/:id', (req, res) => {
   // TODO : delete the user
+  return res.json({ message: 'User created' })
+})
+
+
+*/
+
+// Dynamic Path Routing Optimised way ✅
+
+app
+  .route('/api/users/:id')
+  .get((req, res) => {
+    const id = Number(req.params.id)
+    const user = users.find(user => user.id == id)
+    res.json(user)
+  })
+  .patch((req, res) => {
+    // TODO : Edit the user with id
+    return res.json({ message: 'User created' })
+  })
+  .delete((req, res) => {
+    // TODO : delete the user with id
+    return res.json({ message: 'User created' })
+  })
+
+// POST req ✅
+app.post('/api/users', (req, res) => {
+  // TODO : create a new user
   return res.json({ message: 'User created' })
 })
 

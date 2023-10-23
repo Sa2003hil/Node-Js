@@ -409,6 +409,14 @@ to do all these things firstly we want a data here we don't have any data
 
 ```
 
+
+- **_Here we can see that there is a repetition of code in '/api/users/:id' format so we can use app.route() method to remove this repetition of code_**
+
+
+### Dynamic Path Routing Optimised way ✅
+
+![Alt text](/RestAPIPro/Assets/image.png)
+
 ### Prerequisites
 
 List the software, libraries, and tools that users need to have installed before using your project.
