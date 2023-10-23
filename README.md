@@ -285,6 +285,130 @@ If you are an **Backend Developer** then this particular topic is very important
 ---
 
 
+
+## Day 7 : Building REST API's using Node and Express.js
+
+```js
+
+// app.mjs
+import express from 'express'
+import users from './MOCK_DATA.json' assert { type: 'json' }
+const app = express()
+const PORT = 8001
+
+// ROUTES
+
+/*
+
+creating a route for getting all users✅
+
+Important NOTE:
+Server is basically a hybrid server , means humara server aisa hona chahiye ki vo
+browser ko bhi support kare and another mobile apps ko bhi support kare.
+
+'/users' --> returning JSON
+
+means any user do GET req on 
+
+'/users' ---> render HTML document
+'/api/users' ---> return JSON (mobile apps)
+
+Basically we are making an Hybrid server which can support both browser and mobile apps.this is a good practice to do.
+
+*/
+app.get('/api/users', (req, res) => {
+  return res.json(users)
+})
+
+// if a user do GET req on '/users' then we will render HTML document✅
+
+app.get('/users', (req, res) => {
+  const html = `
+  <ul>${users.map(user => `<li>${user.last_name}</li>`).join('')}</ul>
+  `
+  res.send(html)
+})
+
+// Dynamic Path Routing ✅
+
+app.get('/api/users/:id', (req, res) => {
+  const id = Number(req.params.id)
+  const user = users.find(user => user.id == id)
+  res.json(user)
+})
+
+// POST req ✅
+app.post('/api/users', (req, res) => {
+  // TODO : create a new user
+  return res.json({ message: 'User created' })
+})
+
+// PUT req ✅
+app.patch('/api/users/:id', (req, res) => {
+  // TODO : Edit the user
+  return res.json({ message: 'User created' })
+})
+
+// DELETE req ✅
+app.post('/api/users/:id', (req, res) => {
+  // TODO : delete the user
+  return res.json({ message: 'User created' })
+})
+
+// listening to the server
+app.listen(PORT, () => {
+  console.log(`Server started at PORT ${PORT}`)
+})
+
+
+```
+
+
+_**Task**_
+
+```bash
+Here We are going to make an REST API - (Basically JSON based API)
+
+Important NOTE:
+Server is basically a hybrid server , means humara server aisa hona chahiye ki vo
+browser ko bhi support kare and another mobile apps ko bhi support kare.
+
+'/users' --> returning JSON
+
+means any user do GET req on 
+
+'/users' ---> render HTML document
+'/api/users' ---> return JSON (mobile apps)
+
+Basically we are making an Hybrid server which can support both browser and mobile apps.This is a good practice to do.
+
+GET /users - List all users ✅
+GET /api/users - List all users ✅
+_________________________________
+
+* Dynamic Path Parameter ✅
+
+GET /api/user/1 - GET the user with id 1
+GET /api/user/2 - GET the user with id 2
+_________________________________
+
+POST /api/users - Create new users
+
+
+
+__________________________________
+PATCH /api/user/id - Edit the user with id 1..n
+
+
+__________________________________
+DELETE /api/users/id - Delete the user with id 1..n
+
+
+__________________________________
+to do all these things firstly we want a data here we don't have any data   
+
+```
+
 ### Prerequisites
 
 List the software, libraries, and tools that users need to have installed before using your project.

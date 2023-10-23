@@ -40,9 +40,27 @@ app.get('/users', (req, res) => {
 // Dynamic Path Routing ✅
 
 app.get('/api/users/:id', (req, res) => {
-  const id = req.params.id
+  const id = Number(req.params.id)
   const user = users.find(user => user.id == id)
   res.json(user)
+})
+
+// POST req ✅
+app.post('/api/users', (req, res) => {
+  // TODO : create a new user
+  return res.json({ message: 'User created' })
+})
+
+// PUT req ✅
+app.patch('/api/users/:id', (req, res) => {
+  // TODO : Edit the user
+  return res.json({ message: 'User created' })
+})
+
+// DELETE req ✅
+app.post('/api/users/:id', (req, res) => {
+  // TODO : delete the user
+  return res.json({ message: 'User created' })
 })
 
 // listening to the server

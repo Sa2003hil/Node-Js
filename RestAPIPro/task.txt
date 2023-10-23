@@ -15,14 +15,25 @@ Basically we are making an Hybrid server which can support both browser and mobi
 
 GET /users - List all users ✅
 GET /api/users - List all users ✅
+_________________________________
+
+* Dynamic Path Parameter ✅
+
 GET /api/user/1 - GET the user with id 1
 GET /api/user/2 - GET the user with id 2
-
+_________________________________
 
 POST /api/users - Create new users
 
+
+
+__________________________________
 PATCH /api/user/id - Edit the user with id 1..n
 
+
+__________________________________
 DELETE /api/users/id - Delete the user with id 1..n
 
+
+__________________________________
 to do all these things firstly we want a data here we don't have any data   
