@@ -8,7 +8,7 @@ const PORT = 8001
 // MIDDLEWARES - Plugins
 app.use(express.urlencoded({ extended: false })) // this will help to put the data into req.body from the FORM data
 
-// This is a Logger Middleware which will log the data of the user
+// This is a user defined Logger Middleware which will log the data of the user
 app.use((req, res, next) => {
   console.log(
     req.method,
@@ -17,7 +17,7 @@ app.use((req, res, next) => {
     new Date(),
     req.get('User-Agent')
   )
-  next()
+  next() // This is the function which will tell the server to move to the next middleware
 })
 
 // Dynamic Path Routing Optimised way ✅
