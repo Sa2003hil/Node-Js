@@ -6,6 +6,7 @@ const app = express()
 const PORT = 8001
 
 // MIDDLEWARES - Plugins
+app.use(express.json()) // this will help to put the data into req.body from the JSON data
 app.use(express.urlencoded({ extended: false })) // this will help to put the data into req.body from the FORM data
 
 // This is a user defined Logger Middleware which will log the data of the user
@@ -31,7 +32,11 @@ app
   })
   .patch((req, res) => {
     // TODO : Edit the user with id
-    return res.json({ message: 'User created' })
+    const id = +req.params.id
+    const userIndex = users.findIndex(user => user.id === id)
+    const user = users[userIndex]
+    users.splice(userIndex, 1, { ...user, ...req.body })
+    res.status(201).json({ message: 'User updated' })
   })
   .delete((req, res) => {
     // TODO : delete the user with id
@@ -42,6 +47,12 @@ app
       return res.json({ message: 'User deleted' })
     })
   })
+// .put((req, res) => {  // this is not preferable because it will overwrite the data
+//   const id = +req.params.id
+//   const userIndex = users.findIndex(user => user.id === id)
+//   users.splice(userIndex, 1, { ...req.body, id: id })
+//   res.status(201).json({ message: 'User updated' })
+// })
 
 // POST req ✅
 app.post('/api/users', (req, res) => {
