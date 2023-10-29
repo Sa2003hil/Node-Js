@@ -104,20 +104,20 @@ myServer.listen(8000, () => {
 **Point 1:** 
 
 About Url's
-![Url](/Server/Assets/image.png)
+![Url](/1_Server//Assets/image.png)
 
 **Url path**
 
-![Alt text](./Server/Assets/image-1.png)
+![Alt text](/1_Server/Assets/image-1.png)
 
 **Url Nested path**
 
-![Alt text](./Server/Assets/image-2.png)
+![Alt text](/1_Server/Assets/image-2.png)
 
 
 **URL Query Parameters** : Query parameters are a defined set of parameters attached to the end of a url. 
 Like this:  
-![Alt text](/Server/Assets/image-3.png)
+![Alt text](/1_Server/Assets/image-3.png)
 
 Here the _query parameters_ started after **'?'** and we can start another query parameter after **'&'**
 
@@ -129,13 +129,13 @@ npm i url
 ```
 2. After installing if we run the server by entering url : http://localhost:8000/about?myname=sahil    it will parse the url automatically
 
-![Alt text](/Server/Assets/image-4.png)
+![Alt text](/1_Server//Assets/image-4.png)
 
 3. Now if want to know how variables are declared in the query parameters then we have to use **url.parse(req.url, true)** and it will give us an object of query parameters
 
 Now as you can see in the image query object is also shown showing the parse values of query parameters
 
-![Alt text](/Server/Assets/image-6.png)
+![Alt text](/1_Server/Assets/image-6.png)
  -
 **CODE :**
     
@@ -190,7 +190,7 @@ myServer.listen(8000, () => {
 
 _The basic functionality of the server is to accept the req and then parse the url (to know what acctualy user wants) then collect the data from the database accroding to the parsed url and then send the response to the user_
 
-![Alt text](/Server/Assets/image8.png)
+![Alt text](/1_Server//Assets/image8.png)
 
 
 
@@ -201,12 +201,12 @@ _The basic functionality of the server is to accept the req and then parse the u
 HTTP defines a set of request methods to indicate the desired action to be performed for a given resource.
 
 - **GET :** _[Default method]_
-![Alt text](/Server/Assets/image10.png)
+![Alt text](/1_Server//Assets/image10.png)
 
 - **POST :**
 
   _Like Login Pages or Forms uses Post method to send data to the server_
-![Alt text](/Server/Assets/image11.png)
+![Alt text](/1_Server//Assets/image11.png)
 
 - **PUT :**
 
@@ -267,13 +267,13 @@ npm uninstall url
 ## Day 5 : How Versioning Works in NodeJS?
 - Here '**^**' means **install all Recommended and minnor Fixes Automatically**
 
-![Alt text](/Server/Assets/image13.png)
+![Alt text](/1_Server/Assets/image13.png)
 
 
 - Here '**~**' means **install all minnor Fixes only automatically**
 
 
-![Alt text](/Server/Assets/image14.png)
+![Alt text](/1_Server/Assets/image14.png)
 
 ## Day 6 : What is REST API?
 
