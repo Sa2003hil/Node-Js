@@ -2,7 +2,6 @@
 import express from 'express'
 const app = express()
 const PORT = 8001
-
 const productRouter = express.Router()
 
 import {
