@@ -629,6 +629,168 @@ app.listen(port, () => {
 
 ```
 
+## MongoDB Server - Installation and Setup
+
+- MongoDB is a NoSQL database, which means it is a non-relational database. It is a document-oriented database, which means it stores data in the form of documents. It is an open-source database and is free to use.
+
+Steps:
+
+1. Import mongoose 
+2. Firstly we have to install mongoose using npm
+  ```bash
+  npm i mongoose
+  ```
+  - then we have to import mongoose in our code
+    ```js
+    import mongoose from 'mongoose'
+    ```
+3. Connect to MongoDB server
+
+  ```js
+  // Connection to MongoDB
+// this return the promise
+mongoose
+  .connect('mongodb://127.0.0.1:27017/youtube-app-1')
+  .then(() => console.log('MongoDB Connected'))
+  .catch(err => console.log('MongoDB Error', err))
+  ```
+  - here we are connecting to the MongoDB server and we are using the promise to connect to the server in the given url we have to paste the url of the MongoDB server
+  ```bash
+    # open the terminal and type
+    mongosh 
+    # here a connecting to url will be shown copy that url and paste it in the code
+  ```
+  ![Alt text](/5_MongoDB/assets/image.png)
+
+  - then we have to create a database in the MongoDB server
+  ```bash
+    # open the terminal and type
+    use youtube-app-1
+  ```
+
+
+### Code for MongoDB Server
+
+```js
+// MongoDB is a NoSQL database which is used to store the data in the form of JSON objects
+import express from 'express'
+import mongoose from 'mongoose'
+const app = express()
+const PORT = 8001
+
+// Connection to MongoDB
+// this return the promise
+mongoose
+  .connect('mongodb://127.0.0.1:27017/youtube-app-1')
+  .then(() => console.log('MongoDB Connected'))
+  .catch(err => console.log('MongoDB Error', err))
+
+// Schema
+
+const userSchema = new mongoose.Schema(
+  {
+    firstName: {
+      type: String,
+      required: true
+    },
+    lastName: {
+      type: String
+    },
+    email: {
+      type: String,
+      required: true,
+      unique: true // email should be unique for every user
+    },
+    gender: {
+      type: String,
+      required: true
+    },
+    jobTitle: {
+      type: String
+    }
+  },
+  { timestamps: true }
+)
+
+// Model
+const User = mongoose.model('User', userSchema) // this is also a collection name in the database MongoDB
+
+// MIDDLEWARES - Plugins (body-parser)
+app.use(express.json())
+app.use(express.urlencoded({ extended: false }))
+
+// GET req ✅ : get all users
+
+app.get('/users', async (req, res) => {
+  const allDBUsers = await User.find({})
+  const html = `
+ <ul> 
+ ${allDBUsers.map(user => `<li>${user.firstName}- ${user.email}</li>`).join('')}
+ </ul>
+  `
+  res.send(html)
+})
+
+// POST req ✅ : create a new user
+app.post('/api/users', async (req, res) => {
+  const body = req.body
+  // check if all the fields are present
+  if (
+    !body.first_Name ||
+    !body.last_Name ||
+    !body.email ||
+    !body.gender ||
+    !body.job_Title
+  ) {
+    return res.status(404).json({ message: 'All fields are required' })
+  }
+
+  const result = await User.create({
+    firstName: body.first_Name,
+    lastName: body.last_Name,
+    email: body.email,
+    gender: body.gender,
+    jobTitle: body.job_Title
+  })
+
+  console.log('Result', result)
+
+  return res.status(201).json({ message: 'User created' })
+})
+
+// Dynamic Path Routing Optimised way ✅
+
+app.get('/api/users', async (req, res) => {
+  const allDBusers = await User.find({})
+  return res.json(allDBusers)
+})
+
+app
+  .route('/api/users/:id')
+  .get(async (req, res) => {
+    const user = await User.findById(req.params.id)
+    if (!User) return res.status(404).json({ message: 'User not found' })
+    return res.json(user)
+  })
+  .patch(async (req, res) => {
+    // TODO : Edit the user with id
+
+    await User.findByIdAndUpdate(req.params.id, { lastName: 'Dhiman' })
+    res.status(201).json({ message: 'User updated' })
+  })
+  .delete(async (req, res) => {
+    // TODO : delete the user with id
+    await User.findByIdAndDelete(req.params.id)
+    return res.json({ message: 'User deleted' })
+  })
+
+// listening to the server
+app.listen(PORT, () => {
+  console.log(`Server started at PORT ${PORT}`)
+})
+
+```
+
 ### Prerequisites
 
 List the software, libraries, and tools that users need to have installed before using your project.
