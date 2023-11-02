@@ -1,0 +1,6 @@
+steps to make this URL-Shortner
+
+1. Setup the project first
+2. Then make a MODELS folder and create a file named URL.js
+    make a schema for the URL
+3. Then make a ROUTES folder and create a file named URL.js
