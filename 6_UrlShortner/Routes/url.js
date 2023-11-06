@@ -1,7 +1,15 @@
 import express from 'express'
-import HandleGenerateNewShortUrl from '../Controller/url.js'
+import {
+  handleGenerateNewShortUrl,
+  handleGetAnalytics,
+  handleRedirectUrl
+} from '../Controller/url.js'
 const router = express.Router()
 
-router.post('/', HandleGenerateNewShortUrl)
+router.post('/', handleGenerateNewShortUrl)
+
+router.get('/:shortId', handleRedirectUrl)
+
+router.get('/analytics/:shortId', handleGetAnalytics)
 
 export default router
