@@ -11,7 +11,9 @@ export async function handleGenerateNewShortUrl (req, res) {
     redirectUrl: body.url,
     visitHistory: []
   })
-  return res.json({ id: shortId })
+
+  return res.render('home', { id: shortId })
+  // return res.json({ id: shortId })
 }
 
 // handling the redirect url when the shortId is provided syntax : http://localhost:8001/url/:shortId
@@ -27,7 +29,7 @@ export async function handleRedirectUrl (req, res) {
       }
     }
   )
-  return res.redirect(entry.redirectUrl)
+  res.redirect(entry.redirectUrl)
 }
 
 export async function handleGetAnalytics (req, res) {

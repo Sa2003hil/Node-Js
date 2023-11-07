@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+</head>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+
+    }
+
+    .topdiv {
+        background-color: black;
+        color: white;
+        text-align: center;
+        padding: 10px;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .middiv {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        background-color: blueviolet;
+        height: 50vh;
+        border-radius: 30px;
+        width: 50vw;
+        margin: auto;
+        margin-top: 30px;
+    }
+
+    .middiv>form>label {
+        color: white;
+        font-weight: 5 00;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+
+    .middiv>form>input {
+        height: 30px;
+        border-radius: 10px;
+        border: none;
+        margin: 10px;
+        padding: 10px;
+        width: 12rem;
+    }
+
+    .middiv>form>button {
+        height: 30px;
+        border-radius: 10px;
+        border: none;
+        width: 7rem;
+        background-color: black;
+        color: white;
+        font-weight: bold;
+    }
+
+    .middiv>form>button:hover {
+        background-color: white;
+        color: black;
+        transition: 0.9s;
+        cursor: pointer;
+
+    }
+
+    .lowerdiv {
+        margin-top: 20px;
+        background-color: lightslategrey;
+        padding: 10px;
+        color: white;
+        display: inline-flex;
+        border-radius: 10px 0px 0px 10px;
+        font-weight: 500;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+
+    .lowerdiv>p>span {
+        color: black;
+        font-weight: bold;
+
+    }
+
+    .lowbtndiv {
+        top: 0;
+        display: flex;
+    }
+
+    .lowbtndiv>button {
+        margin-left: 7px;
+        padding: 2px;
+        width: 3rem;
+        background-color: white;
+        border: none;
+        color: black;
+        border-radius: 6px;
+        cursor: pointer;
+    }
+
+    .lowbtndiv>button:hover {
+        background-color: black;
+        color: white;
+        transition: 0.3s;
+    }
+</style>
+
+<body>
+    <div class="topdiv">
+        <h1>URL SHORTNER</h1>
+    </div>
+    <div class="middiv">
+        <!-- in this section  -->
+        <form method="POST" action="/url">
+            <label for="">Enter the URL here :</label>
+            <input type="text" name="url" placeholder="http://www.google.com">
+            <button type="submit">Generate</button>
+        </form>
+        <div class="lowerdiv">
+            <% if (locals.id) { %>
+                <p>URL Generated : <span>http://localhost:8001/url/<%= id %></span>
+                </p>
+                <% } %>
+                    <div class="lowbtndiv">
+                        <button>copy</button>
+                    </div>
+        </div>
+
+    </div>
+</body>
+
+</html>
