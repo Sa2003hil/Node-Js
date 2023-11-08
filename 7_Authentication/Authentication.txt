@@ -1,0 +1,10 @@
+In Nodejs Authentication means verifying the identity of the user. 
+
+Authentication patterns :-
+
+1.stateful authentication 
+    - stateful authentication means that the server will store the user's session in the server memory or database.
+
+
+2.stateless authentication
+    - stateless authentication means that the server will not store the user's session in the server memory or database.
