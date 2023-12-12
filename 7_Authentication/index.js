@@ -3,6 +3,8 @@ import express from 'express'
 import connectToMongoDB from './connection.js'
 import URL from './Models/url.js'
 import path from 'path'
+import cookieParser from 'cookie-parser'
+import { restrictToLoggedInUserOnly } from './middlewares/auth.js'
 
 const app = express()
 const port = 8001
@@ -28,10 +30,11 @@ app.set('views', path.resolve('./views'))
 // Middleware
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
+app.use(cookieParser())
 
 // ROUTES
 app.use('/', staticRoute)
-app.use('/url', urlRoute) // Here the routes are defined in the Routes folder
+app.use('/url', restrictToLoggedInUserOnly, urlRoute) // agar tumhe is route pe kaam karna hai then tumhe logged in hona padega so we put a middleware here 
 app.use('/user', userRoute)
 
 // listen to the port

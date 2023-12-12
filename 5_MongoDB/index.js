@@ -8,7 +8,7 @@ import logResRes from './middlewares/index.js'
 const PORT = 8001
 
 // Connection to MongoDB this return the promise
-connectMongoDB('mongodb://127.0.0.1:27017/youtube-app-1')
+connectMongoDB('mongodb://127.0.0.1:27017/youtube-app-2')
   .then(() => {
     console.log('Connected to MongoDB')
   })
