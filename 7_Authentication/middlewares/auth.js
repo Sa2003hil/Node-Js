@@ -1,7 +1,7 @@
 import { getUser } from '../service/auth.js'
 
 export async function restrictToLoggedInUserOnly(req, res, next) {
-    const userUid = req.cookies.uid
+    const userUid = req.cookies?.uid
     // agar user ki uid nahi hai toh usko login page pe bhej do
     if (!userUid) {
         return res.redirect('/login')
@@ -14,5 +14,5 @@ export async function restrictToLoggedInUserOnly(req, res, next) {
     }
 
     req.user = user;
-    next()
+    next();
 }

@@ -23,8 +23,8 @@ export async function handleUserLogin(req, res) {
     })
   }
 
-  const sessionId = uuidv4() // now make a service folder in which we will create a file auth.js
-  setUser(sessionId, user)
-  res.cookie('uid', sessionId)
-  return res.redirect('/')
+  const sessionId = uuidv4(); // now make a service folder in which we will create a file auth.js
+  setUser(sessionId, user);
+  res.cookie('uid', sessionId);
+  return res.redirect('/');
 }
