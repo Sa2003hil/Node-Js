@@ -33,7 +33,7 @@ router.post('/signin', async (req, res) => {
 
     try {
         const token = await User.matchPasswordAndGenrateToken(email, password);
-        return res.cookie("token", token).redirect('/');
+        return res.cookie('token', token).redirect('/');
 
     } catch (error) {
         return res.render('signin', {
@@ -47,6 +47,10 @@ router.post('/signin', async (req, res) => {
 
 
 })
+
+router.get('/signout', (req, res) => {
+    res.clearCookie('token').redirect('/');
+});
 
 
 export default router;

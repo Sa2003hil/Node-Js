@@ -1,4 +1,4 @@
-import { validateToken } from "../services/auth";
+import { validateToken } from "../services/auth.js";
 
 function checkForAuthCookie(cookieName) {
     return (req, res, next) => {
@@ -8,7 +8,9 @@ function checkForAuthCookie(cookieName) {
         try {
             const userPayload = validateToken(tokenCookieValue);
             req.user = userPayload;
-        } catch (error) { }
+        } catch (error) {
+            console.error("Error validating token:", error);
+        }
         next();
     };
 

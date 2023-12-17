@@ -5,6 +5,7 @@ const secret = 'dsfka#*^231!l#k32lsa3b1l69fad0vxc0';
 function createTokenForUser(user) {
     const payload = {
         _id: user._id,
+        fullName: user.fullName,
         email: user.email,
         profileImageURL: user.profileImageURL,
         role: user.role
@@ -16,10 +17,9 @@ function createTokenForUser(user) {
 
 
 // function to validate token
-function validateToken() {
+function validateToken(token) {
     const payload = jwt.verify(token, secret);
     return payload;
 }
-
 
 export { createTokenForUser, validateToken };

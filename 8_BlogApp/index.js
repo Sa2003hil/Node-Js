@@ -2,7 +2,7 @@ import express from 'express';
 import path from 'path';
 import mongoose from 'mongoose';
 import cookieParser from 'cookie-parser';
-// import { checkForAuthCookie } from './middleware/authentication.js';
+import { checkForAuthCookie } from './middleware/authentication.js';
 const app = express();
 
 import userRouter from './routes/user.js';
@@ -17,9 +17,6 @@ mongoose.connect('mongodb://127.0.0.1:27017/blogify', { useNewUrlParser: true, u
     });
 
 
-
-app.use(express.urlencoded({ extended: false }));
-
 // we are using ejs for client-side rendering
 app.set('view engine', 'ejs');
 
@@ -27,14 +24,20 @@ app.set('view engine', 'ejs');
 app.set('views', path.resolve('views'));
 
 
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(checkForAuthCookie("token"));
+app.use(express.static('public'));
+
 // home route
 app.get('/', (req, res) => {
-    res.render('home');
+    res.render('home', {
+        user: req.user,
+    });
 });
 
+
 app.use('/user', userRouter);
-app.use(cookieParser());
-// app.use(checkForAuthCookie('token'));
 
 const PORT = process.env.PORT || 3000;
 // listen to port

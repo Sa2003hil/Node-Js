@@ -9,7 +9,15 @@
 <body>
     <%- include('./partials/nav.ejs') %>
 
-        <%- include('./partials/scripts.ejs') %>
+        <h3>These are the user details</h3>
+        <% if (user) { %>
+            <%= JSON.stringify(user) %>
+                <!-- Add other user properties as needed -->
+                <% } else { %>
+                    <p>User not logged in</p>
+                    <% } %>
+
+                        <%- include('./partials/scripts.ejs') %>
 
 </body>
 
