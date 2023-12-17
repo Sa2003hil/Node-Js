@@ -1,6 +1,8 @@
 import express from 'express';
 import path from 'path';
 import mongoose from 'mongoose';
+import cookieParser from 'cookie-parser';
+// import { checkForAuthCookie } from './middleware/authentication.js';
 const app = express();
 
 import userRouter from './routes/user.js';
@@ -31,6 +33,8 @@ app.get('/', (req, res) => {
 });
 
 app.use('/user', userRouter);
+app.use(cookieParser());
+// app.use(checkForAuthCookie('token'));
 
 const PORT = process.env.PORT || 3000;
 // listen to port

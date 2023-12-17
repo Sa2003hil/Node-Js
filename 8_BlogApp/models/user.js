@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 import { createHmac, randomBytes } from 'crypto';
-import { createTokenForUser } from '../services/authentication.js';
+import { createTokenForUser } from '../services/auth.js';
 
 const { Schema } = mongoose;
 
@@ -35,7 +35,7 @@ const userSchema = new Schema({
 }, { timestamps: true });
 
 
-// hashing the password using crypto
+// hashing the password using createHmac (pre save hook)
 userSchema.pre("save", function (next) {
     const user = this;
     if (!user.isModified("password")) return;
@@ -82,3 +82,5 @@ userSchema.static('matchPasswordAndGenrateToken', async function (email, passwor
 const User = mongoose.model('User', userSchema);
 
 export default User;
+
+
